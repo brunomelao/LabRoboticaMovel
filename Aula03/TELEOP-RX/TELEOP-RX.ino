@@ -77,7 +77,7 @@ void loop () {
   {
     available = false;
 
-    if(dado == 30){
+    if(dado == 30  || dado == 119){
     digitalWrite(AIN1,LOW);
     digitalWrite(AIN2,HIGH);
     digitalWrite(BIN1,LOW);
@@ -88,7 +88,7 @@ void loop () {
     analogWrite(PWMB,MTB);
   }
   //Caso o dado for igual a b, mover os motores no sentido contrário
-  if(dado == 31){
+  if(dado == 31 || dado == 115){
     digitalWrite(AIN1,HIGH);
     digitalWrite(AIN2,LOW);
     digitalWrite(BIN1,HIGH);
@@ -110,7 +110,7 @@ void loop () {
     analogWrite(PWMB,MTB);
   }
   //Caso o dado for igual a d, gira para a direita
-  if(dado == 29){
+  if(dado == 28 || dado == 97 ){
     digitalWrite(AIN1,LOW);
     digitalWrite(AIN2,HIGH);
     digitalWrite(BIN1,HIGH);
@@ -121,7 +121,7 @@ void loop () {
     analogWrite(PWMB,MTB);
   }
   //Caso o dado for igual a e, gira para a esquerda
-  if(dado == 28){
+  if(dado == 29 || dado == 100){
     digitalWrite(AIN1,HIGH);
     digitalWrite(AIN2,LOW);
     digitalWrite(BIN1,LOW);

@@ -19,6 +19,6 @@ catch
     fclose(esp32);
     disp('Conexão encerrada');
 end
-
-% Erro:Use INSTRFIND to determine if other instrument objects are connected to the requested device. 
+wwwadd
+% Erro: Use INSTRFIND to determine if other instrument objects are connected to the requested device. 
 % Solução: fclose(instrfindall);
