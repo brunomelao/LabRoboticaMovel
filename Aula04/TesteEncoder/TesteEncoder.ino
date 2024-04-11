@@ -1,9 +1,26 @@
-const int PWMA = 33, AIN1 = 26, AIN2 = 25, STBY = 27, BIN1 = 14, BIN2 = 12, PWMB = 13;
+#include <PololuMagneticEncoder.h>
+
+PololuMagneticEncoder encoders;
+long tempo = 0;
+int dt = 100;
+int esquerdo, direito;
+
+const int PWMA = 33;
+const int AIN1 = 26;
+const int AIN2 = 25; 
+const int STBY = 27; 
+const int BIN1 = 14; 
+const int BIN2 = 12; 
+const int PWMB = 13;
 
 int MTA = 0, MTB = 0; // MTA = Direita MTB = Esquerda
 
+
 void setup() {
   // put your setup code here, to run once:
+
+  encoders.setupEncoders(34,39,35,32);
+  
   pinMode(PWMA, OUTPUT);
   pinMode(AIN1, OUTPUT);
   pinMode(AIN2, OUTPUT);
@@ -14,13 +31,12 @@ void setup() {
 
   digitalWrite(STBY, HIGH);
   Serial.begin(9600);
-  
+
 
 }
-// PINOS AIN1 e BIN1 quando LOW: para frente, AIN2 e BIN2 quando LOW: para trás, tudo HIGH trava as rodas
 
 void loop() {
-  // put your  main code here, to run repeatedly:
+  // put your main code here, to run repeatedly:
   int dado;
   if(Serial.available()>0)
   {
@@ -32,8 +48,8 @@ void loop() {
       digitalWrite(AIN1, LOW);
       digitalWrite(BIN1, LOW);
       digitalWrite(BIN2, HIGH);
-      MTA = 255;
-      MTB = 255;
+      MTA = 120;
+      MTB = 120;
       analogWrite(PWMA,MTA);
       analogWrite(PWMB,MTB);
       break;
@@ -79,8 +95,24 @@ void loop() {
       break;
     }
   }
+
+  if (millis() - tempo >= dt)
+    {
+      tempo = millis();
+      // leitura do encoder
+      esquerdo = encoders.getCountsAndResetEncoderLeft();
+      direito = encoders.getCountsAndResetEncoderRight();
+      Serial.print(esquerdo);
+      Serial.print(";");
+      Serial.println(direito);
+    }
 }
 
-
-
-
+/*    esquerdo = encoders.getCountsAndResetM1();
+      direito = encoders.getCountsAndResetM2();
+      Serial.print("RPM esquerdo: ");
+      Serial.print(600*esquerdo/48);
+      Serial.print("      ;      ");
+      Serial.print("RPM direito: ");
+      Serial.println(600*direito/48);
+*/

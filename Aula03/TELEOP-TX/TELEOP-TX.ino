@@ -4,7 +4,8 @@
 #define LED 2
 
 // Definindo macAddress do ESP
-#define MAC {0xD4 , 0x8A , 0xFC , 0xC5 , 0xC9 , 0x14}
+
+#define MAC {0x24 , 0xDC , 0xC3 , 0x45 , 0x0B , 0x68}
 //ESP Board MAC Address: D4:8A:FC:C5:C9:14
 
 // macAddress do ESP32 RX escolhido
