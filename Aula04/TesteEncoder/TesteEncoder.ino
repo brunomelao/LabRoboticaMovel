@@ -48,8 +48,8 @@ void loop() {
       digitalWrite(AIN1, LOW);
       digitalWrite(BIN1, LOW);
       digitalWrite(BIN2, HIGH);
-      MTA = 120;
-      MTB = 120;
+      MTA = 255;
+      MTB = 255;
       analogWrite(PWMA,MTA);
       analogWrite(PWMB,MTB);
       break;
@@ -102,17 +102,10 @@ void loop() {
       // leitura do encoder
       esquerdo = encoders.getCountsAndResetEncoderLeft();
       direito = encoders.getCountsAndResetEncoderRight();
-      Serial.print(esquerdo);
+      Serial.print(60*10*esquerdo/900);
       Serial.print(";");
-      Serial.println(direito);
+      Serial.println(60*10*direito/900);
     }
 }
-
-/*    esquerdo = encoders.getCountsAndResetM1();
-      direito = encoders.getCountsAndResetM2();
-      Serial.print("RPM esquerdo: ");
-      Serial.print(600*esquerdo/48);
-      Serial.print("      ;      ");
-      Serial.print("RPM direito: ");
-      Serial.println(600*direito/48);
-*/
+// 900 pulsos por rotação
+// 
