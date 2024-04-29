@@ -23,6 +23,7 @@ PololuMagneticEncoder encoders;
 long tempo = 0;
 int dT = 100;
 int esquerdo, direito;
+int aux=0;
 
 // Definindo os pinos
 #define LED 2
@@ -107,10 +108,10 @@ void setup() {
   digitalWrite(STBY, HIGH);
 
   // Sentido Horario
-  //digitalWrite(AIN2, LOW);
-  //digitalWrite(AIN1, HIGH);
-  //digitalWrite(BIN1, LOW);
-  //digitalWrite(BIN2, HIGH);
+  // digitalWrite(AIN2, LOW);
+  // digitalWrite(AIN1, HIGH);
+  // digitalWrite(BIN1, LOW);
+  // digitalWrite(BIN2, HIGH);
   // Sentido Anti Horario
   digitalWrite(AIN2, HIGH);
   digitalWrite(AIN1, LOW);
@@ -126,27 +127,27 @@ void loop () {
   if(available)
   {
     available = false;
-  
-    if (millis() - tempo >= dT) {
-      tempo = millis();
-      esquerdo = encoders.getCountsAndResetEncoderLeft();
-      direito = encoders.getCountsAndResetEncoderRight();  
-        //Serial.println(dado);
-        //Serial.println(abs(esquerdo));
-        //Serial.println(abs(direito));
-      MTA = dado;
-      MTB = dado;
-      analogWrite(PWMA, MTA);
-      analogWrite(PWMB, MTB);
-      
-    }
-    encoderReadings.PWM = dado;
-    encoderReadings.esquerdo = abs(esquerdo);
-    encoderReadings.direito = abs(direito);
 
-    // Send message via ESP-NOW
-    esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &encoderReadings, sizeof(encoderReadings));
-    
+    aux=1;
   }
+
+  if (millis() - tempo >= dT) {
+      tempo = millis();
+      if(aux==1){
+        esquerdo = encoders.getCountsAndResetEncoderLeft();
+        direito = encoders.getCountsAndResetEncoderRight();  
+        encoderReadings.PWM = dado;
+        encoderReadings.esquerdo = abs(esquerdo);
+        encoderReadings.direito = abs(direito);
+
+      // Send message via ESP-NOW
+        esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &encoderReadings, sizeof(encoderReadings));
+        MTA = dado;
+        MTB = dado;
+        analogWrite(PWMA, MTA);
+        analogWrite(PWMB, MTB);
+        aux=0;
+      }
+    }
 }
 

@@ -6,6 +6,7 @@
 // Definindo macAddress do ESP
 #define MAC {0x24 , 0xDC , 0xC3 , 0x45 , 0x0B , 0x68}
 // 24:DC:C3:45:0B:68
+
 // macAddress do ESP32 RX escolhido
 uint8_t broadcastAddress[] = MAC;
 
