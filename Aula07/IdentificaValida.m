@@ -18,9 +18,12 @@ theta = inv(X'*X)*X'*Y
 yh = [0];
 for i = 2:N
     yh(i) = theta(1) *  y(i - 1) + theta(2) * u(i-1); 
+    
 end
 
-MSE = sum(sum((yh-y)^2/N));
+for i = 1:N
+    MSE=sum((yh(i)-y(i))^2)/N;
+end
 
 % ------------ Plots -----------
 figure()
@@ -42,7 +45,10 @@ u_t = data_t.d(:,1);
 
 yh_t = [0];
 for i = 2:N
-    yh_t(i) = theta(1) *  y_t(i - 1) + theta(2) * u_t(i-1);    
+    yh_t(i) = theta(1) *  y_t(i - 1) + theta(2) * u_t(i-1);   
+    
 end
 
-MSE_validacao=sum(sum((yh_t-y_t)^2/N));
+for i = 1:N
+    MSE_t=sum((yh_t(i)-y_t(i))^2)/N;
+end
