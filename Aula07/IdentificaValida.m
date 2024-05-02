@@ -1,12 +1,12 @@
 clc, clear, close all
 
-data = load('t100a03');
+data = load('t100a05');
 pv = 900;
 D = 0.042;
 dT = 0.1;
 dS = ((pi*D)/pv)/dT;
 
-y = dS*data.d(:,2);
+y = dS*data.d(:,3);
 u = data.d(:,1);
 N = length(y);
 
@@ -39,7 +39,7 @@ ylabel('Velocidade [m/s]')
 legend('Medido','Calculado') 
 
 % ----------- Validação ---------
-data_t = load('t100a04');
+data_t = load('t100a06');
 y_t = dS*data_t.d(:,2);
 u_t = data_t.d(:,1);
 
