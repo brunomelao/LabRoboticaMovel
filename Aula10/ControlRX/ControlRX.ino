@@ -18,6 +18,10 @@ float iE = 0, iD = 0;
 float uE = 0, uD = 0;
 float vRefD = 0, vRefE = 0;
 float velE, velD;
+
+const int PWMA = 33, AIN1 = 26, AIN2 = 25, STBY = 27, BIN1 = 14, BIN2 = 12, PWMB = 13;
+
+
 // macAddress do ESP32 TX escolhido
 uint8_t MAC_TX[] = MAC;
 
@@ -204,5 +208,5 @@ void loop()
       // Atualize as velocidades dos motores aqui
 
     }
-  }     
+      
 }
