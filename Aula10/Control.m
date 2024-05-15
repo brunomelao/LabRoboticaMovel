@@ -4,8 +4,8 @@ clc, clear variables, close all;
 portaSerial = ('COM3');
 if(~exist('esp32','var'))
     esp32 = configSerial(portaSerial);
-    vD = 0.2;
-    vE = 0.2;
+    vD = 1;
+    vE = 0.5;
     tempo = 0;
     contador = 0;
     vel = [];
@@ -29,8 +29,8 @@ if(~exist('esp32','var'))
                 for i=1:length(msg)
                     fwrite(esp32, msg(i));
                 end
-                 vel(contador,1) = pi*0.042*fscanf(esp32, '%f')/900;
-                 vel(contador,2) = pi*0.042*fscanf(esp32, '%f')/900;              
+                 vel(contador,1) = 0.0015*fscanf(esp32, '%u');
+                 vel(contador,2) = 0.0015*fscanf(esp32, '%u');              
             end
             pause(0.01);
     end
@@ -47,5 +47,7 @@ end
 
 subplot(2,1,1)
 plot(vel(:,1))
+title('Velocidade da roda esquerda')  
 subplot(2,1,2)
 plot(vel(:,2))
+title('Velocidade da roda direita')  
