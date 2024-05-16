@@ -6,7 +6,7 @@ D = 0.042;
 dT = 0.1;
 dS = ((pi*D)/pv)/dT;
 
-y = dS*data.d(:,3);
+y = dS*data.d(:,2);
 u = data.d(:,1);
 N = length(y);
 

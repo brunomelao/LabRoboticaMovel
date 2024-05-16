@@ -5,7 +5,7 @@ clc, clear, close all
 % ---------------------- Inicialização de Variaveis --------------------
 v = 0;
 w = 0;
-l = 0.085/2; % Distancia entre rodas 
+l = 0.085; % Distancia entre rodas 
 r = 0.042/2;
 vel = [];
 tempo = 0;
@@ -27,12 +27,12 @@ if(~exist('esp32', 'var'))
             v = -0.5;
             w =  0;
         elseif ch == 29                                                 % right arrow
-            v = 0;
-            w = -2;
+            v = 0.2;
+            w = -0.2;
 
         elseif ch == 28                                                 % right left
-            v = 0;
-            w = 2;
+            v = 0.2;
+            w = 0.2;
         elseif ch == 32                                                 % space
             v = 0;
             w = 0;
@@ -40,8 +40,8 @@ if(~exist('esp32', 'var'))
 
 
         % ----------- Cálculo de velocidade das rodas ----------------
-        vD = v + w*l;
-        vE = v - w*l;
+        vD = (v + w*l)/ 2;
+        vE = (v - w*l)/ 2;
         
         vD = single(vD);
         vE = single(vE);

@@ -4,8 +4,8 @@ clc, clear variables, close all;
 portaSerial = ('COM3');
 if(~exist('esp32','var'))
     esp32 = configSerial(portaSerial);
-    vD = 1;
-    vE = 0.5;
+    vD = -0.5;
+    vE = -0.5;
     tempo = 0;
     contador = 0;
     vel = [];
@@ -20,7 +20,7 @@ if(~exist('esp32','var'))
     msg = [1 vEarray vDarray];
     
     tic ;
-    while tempo < 10
+    while tempo < 8
         dt = toc;
             if(dt > 0.2)
                 tempo = tempo + dt;
