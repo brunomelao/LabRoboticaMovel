@@ -25,18 +25,7 @@ for i = 1:N
     MSE=sum((yh(i)-y(i))^2)/N;
 end
 
-% ------------ Plots -----------
-figure()
-subplot(1,1,1)
-plot(data.dT, y, 'b', 'linewidth', 2)
-hold on
-plot(data.dT, yh, 'r','linewidth', 2)
-hold on
-grid on
-title('Identificação do Sistema')
-xlabel('Tempo [s]')
-ylabel('Velocidade [m/s]')
-legend('Medido','Calculado') 
+
 
 % ----------- Validação ---------
 data_t = load('t100a06');
@@ -52,3 +41,16 @@ end
 for i = 1:N
     MSE_t=sum((yh_t(i)-y_t(i))^2)/N;
 end
+
+% ------------ Plots -----------
+figure()
+subplot(1,1,1)
+plot(data.dT, y_t, 'b', 'linewidth', 2)
+hold on
+plot(data.dT, yh_t, 'r','linewidth', 2)
+hold on
+grid on
+title('Identificação do Sistema')
+xlabel('Tempo [s]')
+ylabel('Velocidade [m/s]')
+legend('Medido','Calculado') 

@@ -82,10 +82,11 @@ void loop () {
     digitalWrite(AIN2,HIGH);
     digitalWrite(BIN1,LOW);
     digitalWrite(BIN2,HIGH);
-    MTA = 50;
-    MTB = 50;
+    MTA = 100;
+    MTB = 100;
     analogWrite(PWMA,MTA);
     analogWrite(PWMB,MTB);
+    digitalWrite(LED, !digitalRead(LED));
   }
   //Caso o dado for igual a b, mover os motores no sentido contrário
   if(dado == 31 || dado == 115){

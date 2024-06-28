@@ -1,3 +1,6 @@
+
+
+
 close all; clear; clc;
 %Porta Serial utilizada
 portaSerial = 'COM3';
@@ -19,6 +22,6 @@ catch
     fclose(esp32);
     disp('Conexão encerrada');
 end
-wwwadd
+
 % Erro: Use INSTRFIND to determine if other instrument objects are connected to the requested device. 
 % Solução: fclose(instrfindall);

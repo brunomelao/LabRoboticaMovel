@@ -1,4 +1,4 @@
-clc, clear, close all
+mclc, clear, close all
 
 % fclose(instrfind);
 

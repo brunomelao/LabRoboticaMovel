@@ -1,11 +1,11 @@
 clc, clear variables, close all;
-% fclose(instrfind);
+ %fclose(instrfind);
 
 portaSerial = ('COM3');
 if(~exist('esp32','var'))
     esp32 = configSerial(portaSerial);
-    vD = -0.5;
-    vE = -0.5;
+    vD = 0.5;
+    vE = 0.2;
     tempo = 0;
     contador = 0;
     vel = [];

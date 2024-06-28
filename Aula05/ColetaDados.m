@@ -10,7 +10,7 @@ if(~exist('arduino','var'))
      n = randi(255,[1,50]);
      for j = 1:length(n)
         for i= 1:r
-            u(5*(j-1)+i) = n(j);
+            u(r*(j-1)+i) = n(j);
         end
      end
      

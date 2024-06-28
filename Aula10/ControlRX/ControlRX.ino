@@ -125,6 +125,8 @@ void loop()
       digitalWrite(AIN1, LOW);
       digitalWrite(AIN2, HIGH);
       auxD=true;
+      kiDir=510.9769;
+      kpDir=25.3988;
     }
     else if (vRefD == 0)
     {
@@ -138,6 +140,8 @@ void loop()
       digitalWrite(AIN2, LOW);
       vRefD=abs(vRefD);
       auxD=true;
+      kiDir=514.7678;
+      kpDir=25.7384;
     }
 
     //--------------------------------------------------
@@ -147,6 +151,8 @@ void loop()
       digitalWrite(BIN1, LOW);
       digitalWrite(BIN2, HIGH);
       auxE=true;
+      kiEsq=529.5046;
+      kpEsq=26.4752;
 
     }
     else if(vRefE == 0)
@@ -161,6 +167,8 @@ void loop()
       digitalWrite(BIN2, LOW);
       vRefE=abs(vRefE);
       auxE=true;
+      kiEsq=505.146;
+      kpEsq=25.2573;
     }
     //--------------------------------------------------
 
@@ -209,7 +217,7 @@ void loop()
         else if(uD < 0){
           uD=0;
         }
-        
+        digitalWrite(LED, !digitalRead(LED));
    
       }
 
